@@ -918,6 +918,7 @@ h4 {
 .app2 { background: linear-gradient(135deg, #b45309, #0f172a); }
 .web3 { background: linear-gradient(135deg, #0369a1, #0f172a); }
 .hardware1 { background: linear-gradient(135deg, #b91c1c, #0f172a); }
+.hardware2 { background: linear-gradient(135deg, #ea580c, #0f172a); }
 
 .card-overlay {
   position: absolute;
