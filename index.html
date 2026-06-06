@@ -236,33 +236,73 @@
   <section class="experience" id="experience">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-tag">Career & Academics</span>
-        <h2 class="section-title">Experience & Achievements</h2>
+        <span class="section-tag">Career &amp; Academics</span>
+        <h2 class="section-title">Experience &amp; Achievements</h2>
       </div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2024 - Current</span>
-            <h3>B.S. Computer Engineering</h3>
-            <p class="timeline-subtitle">Universidad de Dagupan, Dagupan City, Pangasinan</p>
-            <p>Focusing on embedded systems design, software engineering lifecycle, and advanced networking. Maintaining
-              strong academic standing while prototyping independent robotics applications.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2022 - 2024</span>
-            <h3>B.S. Computer Engineering</h3>
-            <p class="timeline-subtitle">International Electronics and Technical Institute, Inc, San Pedro City, Laguna</p>
-            <p>Built foundational knowledge in electronics, programming, and technical problem-solving.</p>
+
+      <div class="experience-layout">
+        <!-- LEFT: Education Timeline -->
+        <div class="experience-col">
+          <h3 class="experience-col-title"><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">2024 - Current</span>
+                <h3>B.S. Computer Engineering</h3>
+                <p class="timeline-subtitle">Universidad de Dagupan, Dagupan City, Pangasinan</p>
+                <p>Focusing on embedded systems design, software engineering lifecycle, and advanced networking.
+                  Maintaining
+                  strong academic standing while prototyping independent robotics applications.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">2022 - 2024</span>
+                <h3>B.S. Computer Engineering</h3>
+                <p class="timeline-subtitle">International Electronics and Technical Institute, Inc, San Pedro City,
+                  Laguna</p>
+                <p>Built foundational knowledge in electronics, programming, and technical problem-solving.</p>
+              </div>
+            </div>
           </div>
         </div>
 
+        <!-- RIGHT: Certifications -->
+        <div class="experience-col">
+          <h3 class="experience-col-title"><i class="fa-solid fa-certificate"></i> Certifications</h3>
+          <div class="certifications-grid">
+            <div class="cert-card">
+              <div class="cert-image">
+                <img src="certificate.png" alt="Certificate" loading="lazy" />
+                <div class="cert-overlay">
+                  <i class="fa-solid fa-expand"></i>
+                  <span>Click to view</span>
+                </div>
+              </div>
+            </div>
+            <div class="cert-card">
+              <div class="cert-image">
+                <img src="certificate2.png" alt="Certificate" loading="lazy" />
+                <div class="cert-overlay">
+                  <i class="fa-solid fa-expand"></i>
+                  <span>Click to view</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
   </section>
+
+  <!-- Certificate Lightbox -->
+  <div class="cert-lightbox" id="cert-lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">&times;</button>
+    <img src="" alt="Certificate Full View" id="lightbox-img" />
+  </div>
 
   <!-- ===== PORTFOLIO SECTION ===== -->
   <section class="portfolio" id="portfolio">
@@ -279,8 +319,35 @@
       </div>
       <div class="portfolio-grid">
 
-        <!-- FEATURED: ROBOTICS ARM -->
-        <div class="portfolio-card portfolio-card--featured" data-category="hardware">
+        <!-- FEATURED: NOCTUA -->
+        <div class="portfolio-card portfolio-card--featured" data-category="web">
+          <div class="card-image card-image--photo">
+            <img src="noctua.png" alt="Noctua: Your AI Student Buddy" loading="lazy" />
+            <div class="card-overlay">
+              <div class="card-links">
+                <a href="https://github.com/Kenjiroooo" target="_blank" class="card-link" title="View Code"><i
+                    class="fa-brands fa-github"></i> Repository</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="card-tag">AI-Powered Web Application</span>
+            <h3>Noctua: Your AI Student Buddy</h3>
+            <p>Meet Noctua: A brilliant, perpetually annoyed, and begrudgingly helpful owl AI study assistant that turns
+              study sessions from a chore into an interactive experience. Built with a modern, responsive web
+              application architecture, Noctua combines advanced language model APIs, secure cloud syncing, and reactive
+              micro-interactions.</p>
+            <div class="card-tech-stack">
+              <span class="tech-badge">Next.js</span>
+              <span class="tech-badge">LLM APIs</span>
+              <span class="tech-badge">Cloud Sync</span>
+              <span class="tech-badge">Capacitor</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROBOTICS ARM -->
+        <div class="portfolio-card" data-category="hardware">
           <div class="card-image card-image--photo">
             <img src="robotics-arm.png" alt="3D-Printed Robotic Arm Controller" loading="lazy" />
             <div class="card-overlay">
@@ -308,32 +375,6 @@
           </div>
         </div>
 
-        <!-- SMARS LINE FOLLOWING ROBOT -->
-        <div class="portfolio-card" data-category="hardware">
-          <div class="card-image card-image--photo">
-            <img src="smars.png" alt="SMARS Line Following Robot" loading="lazy" />
-            <div class="card-overlay">
-              <div class="card-links">
-                <a href="https://github.com/Kenjiroooo/School-output-and-practice-coding-projects/tree/main/SMARS%20Line%20Following%20Robot"
-                  target="_blank" class="card-link" title="View Source"><i class="fa-brands fa-github"></i> Source Code</a>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <span class="card-tag card-tag--hardware">Embedded Systems / Robotics</span>
-            <h3>SMARS Line Following Robot</h3>
-            <p>
-              Developed a SMARS-based autonomous line-following robot using Arduino Uno, L298P motor driver, GA12-N20 DC motors, and three IR line tracking sensors. The system processes real-time sensor input to detect and follow a predefined path by dynamically controlling motor movement. The robot is powered by a 9V battery and housed in a custom 3D-printed chassis, demonstrating skills in embedded systems, robotics integration, sensor interfacing, and basic autonomous navigation design.
-            </p>
-            <div class="card-tech-stack">
-              <span class="tech-badge">Arduino Uno</span>
-              <span class="tech-badge">C++</span>
-              <span class="tech-badge">Robotics integration</span>
-              <span class="tech-badge">3D Assembly</span>
-            </div>
-          </div>
-        </div>
-
         <!-- SPIDER BOT (GAGAMBOT) -->
         <div class="portfolio-card" data-category="hardware">
           <div class="card-image card-image--photo">
@@ -349,7 +390,10 @@
             <span class="card-tag card-tag--hardware">Robotics / Hardware Integration</span>
             <h3>Spider Bot (GAGAMBOT)</h3>
             <p>
-              Developed an autonomous, multi-legged Spider Bot (GAGAMBOT) powered by an Arduino Nano controlling 12 MG90 servos. The system integrates a Raspberry Pi Zero 2W with a RPi Cam for computer vision/object tracking, operating via a logic shifter for safe UART communication. The robot is housed in custom 3D-printed parts and powered by two 18650 batteries using an XL4015 buck converter for voltage regulation.
+              Developed an autonomous, multi-legged Spider Bot (GAGAMBOT) powered by an Arduino Nano controlling 12 MG90
+              servos. The system integrates a Raspberry Pi Zero 2W with a RPi Cam for computer vision/object tracking,
+              operating via a logic shifter for safe UART communication. The robot is housed in custom 3D-printed parts
+              and powered by two 18650 batteries using an XL4015 buck converter for voltage regulation.
             </p>
             <div class="card-tech-stack">
               <span class="tech-badge">Arduino Nano</span>
@@ -365,18 +409,51 @@
             <img src="project3.png" alt="Bloodhunt Monopoly" loading="lazy" />
             <div class="card-overlay">
               <div class="card-links">
-                <a href="https://github.com/Kenjiroooo/Bloodhunt-monopoly" target="_blank" class="card-link" title="View Code"><i
-                    class="fa-brands fa-github"></i> Repository</a>
+                <a href="https://github.com/Kenjiroooo/Bloodhunt-monopoly" target="_blank" class="card-link"
+                  title="View Code"><i class="fa-brands fa-github"></i> Repository</a>
               </div>
             </div>
           </div>
           <div class="card-body">
             <span class="card-tag">Full-Stack Web Game</span>
             <h3>Bloodhunt Monopoly</h3>
-            <p>Bloodhunt Monopoly is a custom-built browser game developed with HTML, CSS, and JavaScript, powered by Firebase Database and Hosting. It features a unique themed interface, interactive gameplay elements, and live web deployment, highlighting my skills in frontend design, game logic, and cloud integration.</p>
+            <p>Bloodhunt Monopoly is a custom-built browser game developed with HTML, CSS, and JavaScript, powered by
+              Firebase Database and Hosting. It features a unique themed interface, interactive gameplay elements, and
+              live web deployment, highlighting my skills in frontend design, game logic, and cloud integration.</p>
             <div class="card-tech-stack">
               <span class="tech-badge">HTML/CSS/JS</span>
               <span class="tech-badge">Firebase</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SMARS LINE FOLLOWING ROBOT -->
+        <div class="portfolio-card" data-category="hardware">
+          <div class="card-image card-image--photo">
+            <img src="smars.png" alt="SMARS Line Following Robot" loading="lazy" />
+            <div class="card-overlay">
+              <div class="card-links">
+                <a href="https://github.com/Kenjiroooo/School-output-and-practice-coding-projects/tree/main/SMARS%20Line%20Following%20Robot"
+                  target="_blank" class="card-link" title="View Source"><i class="fa-brands fa-github"></i> Source
+                  Code</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="card-tag card-tag--hardware">Embedded Systems / Robotics</span>
+            <h3>SMARS Line Following Robot</h3>
+            <p>
+              Developed a SMARS-based autonomous line-following robot using Arduino Uno, L298P motor driver, GA12-N20 DC
+              motors, and three IR line tracking sensors. The system processes real-time sensor input to detect and
+              follow a predefined path by dynamically controlling motor movement. The robot is powered by a 9V battery
+              and housed in a custom 3D-printed chassis, demonstrating skills in embedded systems, robotics integration,
+              sensor interfacing, and basic autonomous navigation design.
+            </p>
+            <div class="card-tech-stack">
+              <span class="tech-badge">Arduino Uno</span>
+              <span class="tech-badge">C++</span>
+              <span class="tech-badge">Robotics integration</span>
+              <span class="tech-badge">3D Assembly</span>
             </div>
           </div>
         </div>

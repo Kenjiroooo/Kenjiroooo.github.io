@@ -61,7 +61,7 @@ function updateActiveNavLink() {
     const height = section.offsetHeight;
     const id = section.getAttribute('id');
     const link = document.querySelector(`.nav-link[href="#${id}"]`);
-    
+
     if (link) {
       if (scrollPos >= top && scrollPos < top + height) {
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
@@ -129,9 +129,9 @@ filterBtns.forEach(btn => {
     // Update active button
     filterBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    
+
     const filter = btn.dataset.filter;
-    
+
     portfolioCards.forEach(card => {
       const category = card.dataset.category;
       if (filter === 'all' || filter === category) {
@@ -157,18 +157,18 @@ const formSuccess = document.getElementById('form-success');
 
 contactForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  
+
   const btn = contactForm.querySelector('button[type="submit"]');
   btn.textContent = 'Sending...';
   btn.disabled = true;
-  
+
   // Simulate form submission
   setTimeout(() => {
     formSuccess.classList.add('show');
     contactForm.reset();
     btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
     btn.disabled = false;
-    
+
     setTimeout(() => {
       formSuccess.classList.remove('show');
     }, 5000);
@@ -180,7 +180,7 @@ function revealOnScroll() {
   const reveals = document.querySelectorAll(
     '.about-grid, .skill-category, .timeline-item, .portfolio-card, .contact-grid, .section-header'
   );
-  
+
   reveals.forEach(el => {
     if (el.dataset.revealed) return;
     const rect = el.getBoundingClientRect();
@@ -201,3 +201,33 @@ window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', () => {
   revealOnScroll();
 });
+
+/* ===== CERTIFICATE LIGHTBOX ===== */
+const certLightbox = document.getElementById('cert-lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxClose = document.getElementById('lightbox-close');
+
+document.querySelectorAll('.cert-image').forEach(certImg => {
+  certImg.addEventListener('click', () => {
+    const imgSrc = certImg.querySelector('img').src;
+    lightboxImg.src = imgSrc;
+    certLightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+if (lightboxClose) {
+  lightboxClose.addEventListener('click', () => {
+    certLightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+}
+
+if (certLightbox) {
+  certLightbox.addEventListener('click', (e) => {
+    if (e.target === certLightbox) {
+      certLightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+}
