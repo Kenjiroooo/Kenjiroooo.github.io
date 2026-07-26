@@ -38,6 +38,7 @@
 
   <!-- ===== HERO SECTION ===== -->
   <section class="hero" id="home">
+    <canvas id="hero-particles"></canvas>
     <div class="hero-container">
       <div class="hero-text">
         <div class="status-badge">
@@ -48,9 +49,9 @@
           <span class="typed-text" id="typed-text"></span><span class="cursor">|</span>
         </h2>
         <p class="hero-desc">
-          Computer Engineering student at Universidad de Dagupan specializing in <strong>Embedded Systems</strong>,
-          <strong>Robotics</strong>, and <strong>Full-Stack Applications</strong>. I build reliable hardware-software
-          integrations and maintainable code for real-world problems.
+          Computer Engineering student at Universidad de Dagupan specializing in <strong>AI Integration</strong>,
+          <strong>Integrated Web Development</strong>, and <strong>Embedded Systems</strong>. I build intelligent hardware-software
+          integrations and maintainable applications for real-world problems.
         </p>
         <div class="hero-buttons">
           <a href="#portfolio" class="btn btn-primary">View Projects</a>
@@ -103,8 +104,8 @@
               style="width: 100%; height: 100%; object-fit: cover; object-position: top;">
           </div>
           <div class="about-badge">
-            <i class="fa-solid fa-microchip"></i>
-            <span>Hardware & Software</span>
+            <i class="fa-solid fa-brain"></i>
+            <span>AI & Web Integration</span>
           </div>
         </div>
         <div class="about-content">
@@ -112,13 +113,13 @@
           <p class="about-subtitle"><i class="fa-solid fa-graduation-cap"></i> B.S. Computer Engineering | Universidad
             de Dagupan</p>
           <p>
-            I am a Computer Engineering student dedicated to building robust hardware-software integrations and
-            performant web applications. My academic and project experience spans embedded systems, IoT architecture,
-            robotics, and full-stack development.
+            I am a Computer Engineering student dedicated to building intelligent hardware-software integrations and
+            performant web applications. My academic and project experience spans AI integration, integrated web development,
+            and embedded systems.
           </p>
           <p>
-            Whether I'm writing low-level C++ for an ESP32 micro-controller or designing responsive React interfaces, I
-            focus on delivering scalable, clean, and maintainable solutions. I am currently seeking internship
+            Whether I'm integrating advanced LLM APIs into web applications, writing low-level C++ for micro-controllers, or designing responsive interfaces, I
+            focus on delivering scalable, clean, and intelligent solutions. I am currently seeking internship
             opportunities to apply my engineering foundation to real-world products.
           </p>
           <div class="about-info-grid">
@@ -140,7 +141,7 @@
               <i class="fa-solid fa-laptop-code"></i>
               <div>
                 <span class="info-label">Focus</span>
-                <span class="info-value">Embedded Systems & Web</span>
+                <span class="info-value">AI Integration & Web</span>
               </div>
             </div>
             <div class="info-card">
@@ -208,23 +209,23 @@
           </div>
         </div>
         <div class="skill-category">
-          <h3><i class="fa-solid fa-laptop-code"></i> Web & Tools</h3>
+          <h3><i class="fa-solid fa-laptop-code"></i> AI & Web Tools</h3>
           <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fa-solid fa-brain"></i></div>
+              <span>AI Integration</span>
+            </div>
             <div class="skill-item">
               <div class="skill-icon"><i class="fa-brands fa-react"></i></div>
               <span>React ecosystem</span>
             </div>
             <div class="skill-item">
               <div class="skill-icon"><i class="fa-brands fa-node-js"></i></div>
-              <span>Node.js / Express</span>
+              <span>Node.js / APIs</span>
             </div>
             <div class="skill-item">
               <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
               <span>SQL / NoSQL</span>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fa-brands fa-git-alt"></i></div>
-              <span>Git / GitHub</span>
             </div>
           </div>
         </div>
@@ -313,8 +314,8 @@
       </div>
       <div class="portfolio-filter">
         <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="hardware">Hardware & Embedded</button>
-        <button class="filter-btn" data-filter="web">Full-Stack Web</button>
+        <button class="filter-btn" data-filter="web">AI & Integrated Web</button>
+        <button class="filter-btn" data-filter="hardware">Embedded Systems</button>
         <button class="filter-btn" data-filter="software">Software Architecture</button>
       </div>
       <div class="portfolio-grid">
@@ -325,8 +326,9 @@
             <img src="noctua.png" alt="Noctua: Your AI Student Buddy" loading="lazy" />
             <div class="card-overlay">
               <div class="card-links">
-                <a href="https://github.com/Kenjiroooo" target="_blank" class="card-link" title="View Code"><i
-                    class="fa-brands fa-github"></i> Repository</a>
+                <a href="https://ai-study-buddy-clean-nextjs.vercel.app/" target="_blank" class="card-link" title="Visit Website"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Website</a>
+                <a href="https://github.com/Kenjiroooo" target="_blank" class="card-link" title="Source Code"><i
+                    class="fa-brands fa-github"></i> Source Code</a>
               </div>
             </div>
           </div>
@@ -409,8 +411,9 @@
             <img src="project3.png" alt="Bloodhunt Monopoly" loading="lazy" />
             <div class="card-overlay">
               <div class="card-links">
+                <a href="https://sakamoto-bloodhunt-monopoly.web.app/" target="_blank" class="card-link" title="Visit Website"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Website</a>
                 <a href="https://github.com/Kenjiroooo/Bloodhunt-monopoly" target="_blank" class="card-link"
-                  title="View Code"><i class="fa-brands fa-github"></i> Repository</a>
+                  title="Source Code"><i class="fa-brands fa-github"></i> Source Code</a>
               </div>
             </div>
           </div>
@@ -517,8 +520,8 @@
       <div class="contact-grid">
         <div class="contact-info">
           <h3>Looking for an Engineering Intern?</h3>
-          <p>I am actively seeking internship opportunities or entry-level positions in software development, embedded
-            systems, or IoT architecture. If your team needs a dedicated, technically grounded student, I'd love to
+          <p>I am actively seeking internship opportunities or entry-level positions in AI integration, integrated web development,
+            and embedded systems. If your team needs a dedicated, technically grounded student, I'd love to
             connect.</p>
           <div class="contact-details">
             <div class="contact-item">
