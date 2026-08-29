@@ -1,3 +1,5 @@
+import type React from 'react';
+
 // ============================================================
 //  KENJI D. SAKAMOTO — PORTFOLIO TYPES
 // ============================================================
@@ -9,16 +11,14 @@ export interface SocialLink {
   icon: string; // Font Awesome class string e.g. "fa-brands fa-github"
 }
 
-export interface SkillItem {
-  icon: string; // Font Awesome class
-  label: string;
-}
+export type TechCategory = 'languages' | 'web' | 'ai' | 'embedded' | 'tools';
 
-export interface SkillCategory {
+export interface TechItem {
   id: string;
-  title: string;
-  icon: string; // Font Awesome class
-  items: SkillItem[];
+  name: string;
+  category: TechCategory;
+  icon: React.ReactNode;
+  brandColor: string;
 }
 
 export interface Education {

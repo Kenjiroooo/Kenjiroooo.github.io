@@ -5,7 +5,7 @@ import { useScrollPosition } from '../hooks/useScrollPosition';
 const NAV_ITEMS = [
   { label: 'Home', href: '#home', id: 'home' },
   { label: 'About', href: '#about', id: 'about' },
-  { label: 'Skills', href: '#skills', id: 'skills' },
+  { label: 'Tech Stack', href: '#tech', id: 'tech' },
   { label: 'Portfolio', href: '#portfolio', id: 'portfolio' },
   { label: 'Gallery', href: '#gallery', id: 'gallery' },
   { label: 'Contact', href: '#contact', id: 'contact' },

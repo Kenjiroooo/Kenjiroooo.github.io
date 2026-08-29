@@ -3,7 +3,7 @@ import { socialLinks } from '../data/socials';
 const NAV_ITEMS = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
+  { label: 'Tech Stack', href: '#tech' },
   { label: 'Portfolio', href: '#portfolio' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Contact', href: '#contact' },
