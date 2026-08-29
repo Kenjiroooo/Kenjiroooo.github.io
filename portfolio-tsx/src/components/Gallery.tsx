@@ -59,17 +59,15 @@ export default function Gallery() {
           ))}
         </motion.div>
 
-        {/* Gallery grid */}
-        <motion.div className="gallery-grid" layout>
-          <AnimatePresence mode="popLayout">
-            {filtered.map(image => (
+        {/* Gallery slider */}
+        <div className="gallery-slider">
+          <div className="gallery-track">
+            {[...filtered, ...filtered].map((image, index) => (
               <motion.div
-                key={image.id}
+                key={`${image.id}-${index}`}
                 className="gallery-card"
-                layout
                 initial={{ opacity: 0, scale: 0.92, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.88, y: -10 }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
                 whileHover={{ y: -6 }}
                 onClick={() => setSelectedImage(image.src)}
@@ -86,8 +84,8 @@ export default function Gallery() {
                 </div>
               </motion.div>
             ))}
-          </AnimatePresence>
-        </motion.div>
+          </div>
+        </div>
       </div>
 
       {/* Lightbox for full view */}
