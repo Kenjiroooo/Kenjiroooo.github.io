@@ -14,7 +14,7 @@ const stagger = {
 };
 
 const CONTACT_DETAILS = [
-  { icon: 'fa-solid fa-envelope', label: 'Email', value: 'sakamotoken003@gmail.com' },
+  { icon: 'fa-solid fa-envelope', label: 'Email', value: 'sakamotokenji35@gmail.com' },
   { icon: 'fa-solid fa-map-marker-alt', label: 'Location', value: 'Dagupan City, Pangasinan, PH' },
   { icon: 'fa-brands fa-linkedin', label: 'LinkedIn', value: 'Kenji Sakamoto' },
 ];
@@ -29,14 +29,41 @@ export default function Contact() {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setStatus('sending');
-    setTimeout(() => {
-      setStatus('sent');
-      setForm(EMPTY_FORM);
-      setTimeout(() => setStatus('idle'), 5000);
-    }, 1200);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: 'YOUR_WEB3FORMS_KEY_HERE',
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message,
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setStatus('sent');
+        setForm(EMPTY_FORM);
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        console.error(result);
+        setStatus('idle');
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus('idle');
+      alert('Network error. Please try again.');
+    }
   }
 
   return (

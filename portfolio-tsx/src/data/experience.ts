@@ -24,17 +24,17 @@ export const educationList: Education[] = [
 export const certifications: Certification[] = [
   {
     id: 'cert-1',
-    image: '/certificate.png',
+    image: '/certificate.webp',
     alt: 'Certificate',
   },
   {
     id: 'cert-2',
-    image: '/certificate2.png',
+    image: '/certificate2.webp',
     alt: 'Certificate',
   },
   {
     id: 'cert-python',
-    image: '/pythoncertificate.png',
+    image: '/pythoncertificate.webp',
     alt: 'Python Certificate',
   },
 ];

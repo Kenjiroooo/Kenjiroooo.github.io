@@ -14,7 +14,7 @@ const INFO_CARDS = [
   { icon: 'fa-solid fa-location-dot', label: 'Location', value: 'Dagupan City, PH' },
   { icon: 'fa-solid fa-building-columns', label: 'Education', value: 'Universidad de Dagupan' },
   { icon: 'fa-solid fa-laptop-code', label: 'Focus', value: 'AI Integration & Web' },
-  { icon: 'fa-solid fa-envelope', label: 'Contact', value: 'sakamotoken003@gmail.com' },
+  { icon: 'fa-solid fa-envelope', label: 'Contact', value: 'sakamotokenji35@gmail.com' },
 ];
 
 export default function About() {
@@ -43,7 +43,7 @@ export default function About() {
           <motion.div className="about-image-wrapper" variants={fadeUp}>
             <div className="about-avatar">
               <img
-                src="/Portfoliopic.PNG"
+                src="/Portfoliopic.webp"
                 alt="Kenji D. Sakamoto"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
               />

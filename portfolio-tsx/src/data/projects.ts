@@ -5,7 +5,7 @@ export const projects: Project[] = [
     id: 'noctua',
     category: 'web',
     featured: true,
-    image: '/noctua.png',
+    image: '/noctua.webp',
     alt: 'Noctua: Your AI Student Buddy',
     tag: 'AI-Powered Web Application',
     tagVariant: 'default',
@@ -29,7 +29,7 @@ export const projects: Project[] = [
   {
     id: 'robotics-arm',
     category: 'hardware',
-    image: '/robotics-arm.png',
+    image: '/robotics-arm.webp',
     alt: '3D-Printed Robotic Arm Controller',
     tag: 'Embedded Systems / Mechanical Design',
     tagVariant: 'hardware',
@@ -48,7 +48,7 @@ export const projects: Project[] = [
   {
     id: 'gagambot',
     category: 'hardware',
-    image: '/spiderbot.png',
+    image: '/spiderbot.webp',
     alt: 'Spider Bot (GAGAMBOT)',
     tag: 'Robotics / Hardware Integration',
     tagVariant: 'hardware',
@@ -67,7 +67,7 @@ export const projects: Project[] = [
   {
     id: 'bloodhunt-monopoly',
     category: 'web',
-    image: '/project3.png',
+    image: '/project3.webp',
     alt: 'Bloodhunt Monopoly',
     tag: 'Full-Stack Web Game',
     tagVariant: 'default',
@@ -91,7 +91,7 @@ export const projects: Project[] = [
   {
     id: 'smars',
     category: 'hardware',
-    image: '/smars.png',
+    image: '/smars.webp',
     alt: 'SMARS Line Following Robot',
     tag: 'Embedded Systems / Robotics',
     tagVariant: 'hardware',

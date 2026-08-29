@@ -857,7 +857,15 @@ h1, h2, h3, h4 {
 }
 
 /* ===== PORTFOLIO SECTION ===== */
-.portfolio { background: var(--bg-dark); }
+.portfolio { background: var(--bg-dark); position: relative; }
+
+.portfolio::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
 
 .portfolio-filter {
   display: flex; gap: 8px;

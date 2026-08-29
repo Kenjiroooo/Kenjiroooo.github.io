@@ -108,7 +108,7 @@ export default function Hero() {
         <motion.div className="hero-image" variants={imageItem} initial="hidden" animate="show">
           <div className="avatar-blob">
             <img
-              src="/Portfoliopic.PNG"
+              src="/Portfoliopic.webp"
               alt="Kenji D. Sakamoto"
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
             />
