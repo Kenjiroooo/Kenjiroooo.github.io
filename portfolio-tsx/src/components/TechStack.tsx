@@ -38,7 +38,10 @@ export default function TechStack() {
     }
   }
 
-  const infiniteItems = [...paddedFiltered, ...paddedFiltered];
+  const rowItems = Array.from({ length: rows }, () => [] as typeof paddedFiltered);
+  paddedFiltered.forEach((tech, index) => {
+    rowItems[index % rows].push(tech);
+  });
 
   return (
     <section className="tech-stack" id="tech">
@@ -80,10 +83,14 @@ export default function TechStack() {
 
         {/* Tech Stack Slider */}
         <div className="tech-slider">
-          <div className="tech-track" style={{ '--rows': rows } as React.CSSProperties}>
-            {infiniteItems.map((tech, index) => (
-              <motion.div
-                key={`${tech.id}-${index}`}
+          {rowItems.map((items, rowIndex) => (
+            <div 
+              key={rowIndex}
+              className={`tech-track ${rowIndex % 2 === 1 ? 'reverse' : ''}`}
+            >
+              {[...items, ...items].map((tech, index) => (
+                <motion.div
+                  key={`${tech.id}-${rowIndex}-${index}`}
                 className="tech-card"
                 initial={{ opacity: 0, scale: 0.8, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -102,6 +109,7 @@ export default function TechStack() {
               </motion.div>
             ))}
           </div>
+        ))}
         </div>
       </div>
     </section>
