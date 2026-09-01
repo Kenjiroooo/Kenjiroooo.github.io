@@ -50,7 +50,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <img src="/mypic.png" alt="Kenji D. Sakamoto" />
+          <img src="/coder.jpg" alt="Kenji D. Sakamoto" />
         </motion.div>
 
         {/* Right Column */}
