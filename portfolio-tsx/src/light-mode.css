@@ -1,0 +1,56 @@
+body.light-mode {
+  /* Backgrounds — light palette */
+  --bg-primary:    #f8f9fa;
+  --bg-secondary:  #ffffff;
+  --bg-card:       #ffffff;
+  --bg-card-hover: #f1f3f5;
+  --bg-nav:        rgba(255, 255, 255, 0.92);
+
+  /* Accent */
+  --accent:        #0d6efd;
+  --accent-dim:    rgba(13, 110, 253, 0.1);
+  --accent-border: rgba(13, 110, 253, 0.25);
+
+  /* Text */
+  --text-primary:  #212529;
+  --text-secondary:#495057;
+  --text-muted:    #6c757d;
+  --text-dim:      #adb5bd;
+
+  /* Borders */
+  --border:        rgba(0, 0, 0, 0.08);
+  --border-light:  rgba(0, 0, 0, 0.15);
+  --border-accent: rgba(13, 110, 253, 0.3);
+
+  /* Shadows */
+  --shadow-sm:   0 1px 4px rgba(0, 0, 0, 0.05);
+  --shadow:      0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg:   0 16px 48px rgba(0, 0, 0, 0.12);
+  --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Specific overrides for hardcoded colors in custom.css or index.css for light mode */
+body.light-mode .about-link {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+body.light-mode .about-link:hover {
+  border-color: #000;
+}
+
+body.light-mode .social-icon {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+body.light-mode .card-link {
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .featured-project .card-overlay {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* Fix navbar icon in light mode */
+body.light-mode .hamburger span {
+  background: var(--text-primary);
+}

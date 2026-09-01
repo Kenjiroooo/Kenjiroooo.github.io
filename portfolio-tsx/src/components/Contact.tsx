@@ -4,19 +4,19 @@ import { socialLinks } from '../data/socials';
 import type { FormData } from '../types';
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 32 },
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
 };
 
 const stagger = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12 } },
+  show: { transition: { staggerChildren: 0.1 } },
 };
 
 const CONTACT_DETAILS = [
-  { icon: 'fa-solid fa-envelope', label: 'Email', value: 'sakamotokenji35@gmail.com' },
-  { icon: 'fa-solid fa-map-marker-alt', label: 'Location', value: 'Dagupan City, Pangasinan, PH' },
-  { icon: 'fa-brands fa-linkedin', label: 'LinkedIn', value: 'Kenji Sakamoto' },
+  { icon: 'fa-solid fa-envelope',      label: 'Email',    value: 'sakamotokenji35@gmail.com' },
+  { icon: 'fa-solid fa-map-marker-alt',label: 'Location', value: 'Dagupan City, Pangasinan, PH' },
+  { icon: 'fa-brands fa-linkedin',     label: 'LinkedIn', value: 'Kenji Sakamoto' },
 ];
 
 const EMPTY_FORM: FormData = { name: '', email: '', subject: '', message: '' };
@@ -69,48 +69,36 @@ export default function Contact() {
   return (
     <section className="contact" id="contact">
       <div className="section-container">
+        {/* Eyebrow */}
         <motion.div
-          className="section-header"
+          className="section-eyebrow"
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <span className="section-tag">Let&apos;s Connect</span>
-          <h2 className="section-title">Open to Opportunities</h2>
+          <span className="section-number">05</span>
+          Contact
         </motion.div>
 
-        <motion.div
-          className="contact-grid"
-          variants={stagger}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {/* Left: Info */}
-          <motion.div className="contact-info" variants={fadeUp}>
-            <h3>Looking for an Engineering Intern?</h3>
-            <p>
-              I am actively seeking internship opportunities or entry-level positions in
-              AI integration, integrated web development, and embedded systems. If your
-              team needs a dedicated, technically grounded student, I&apos;d love to connect.
-            </p>
-
-            <div className="contact-details">
-              {CONTACT_DETAILS.map(detail => (
-                <div key={detail.label} className="contact-item">
-                  <div className="contact-icon">
-                    <i className={detail.icon} />
-                  </div>
-                  <div>
-                    <span className="contact-label">{detail.label}</span>
-                    <span className="contact-value">{detail.value}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="contact-socials">
+        {/* Large editorial CTA */}
+        <div className="contact-top">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <motion.h2 className="contact-cta-heading" variants={fadeUp}>
+              Let's Build<br />
+              Something <em>Useful.</em>
+            </motion.h2>
+            <motion.p className="contact-cta-lead" variants={fadeUp}>
+              If you have an interesting project, internship opportunity, or collaboration
+              in mind, I'd love to connect. I'm actively seeking roles in AI integration,
+              web development, and embedded systems.
+            </motion.p>
+            <motion.div className="social-icons" variants={fadeUp} style={{ marginBottom: 32 }}>
               {socialLinks.map(link => (
                 <motion.a
                   key={link.ariaLabel}
@@ -120,20 +108,59 @@ export default function Contact() {
                   className="social-icon"
                   aria-label={link.ariaLabel}
                   title={link.title}
-                  whileHover={{ scale: 1.15, y: -4 }}
+                  whileHover={{ scale: 1.12, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <i className={link.icon} />
                 </motion.a>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
 
-          {/* Right: Form */}
+          <motion.div
+            className="contact-details"
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {CONTACT_DETAILS.map(detail => (
+              <motion.div key={detail.label} className="contact-item" variants={fadeUp}>
+                <div className="contact-icon">
+                  <i className={detail.icon} />
+                </div>
+                <div>
+                  <span className="contact-label">{detail.label}</span>
+                  <span className="contact-value">{detail.value}</span>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Contact Form */}
+        <div className="contact-grid">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '1.3rem', marginBottom: 8, color: 'var(--text-primary)' }}>
+              Send a Message
+            </h3>
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: 0 }}>
+              Prefer a direct line? Fill out the form and I'll get back to you promptly.
+            </p>
+          </motion.div>
+
           <motion.form
             className="contact-form"
             id="contact-form"
             variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
             onSubmit={handleSubmit}
           >
             <div className="form-group">
@@ -173,12 +200,12 @@ export default function Contact() {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="message">Project or Role Details</label>
+              <label htmlFor="message">Message</label>
               <textarea
                 id="message"
                 name="message"
                 rows={5}
-                placeholder="How can I help your engineering team?"
+                placeholder="Tell me about your project or opportunity..."
                 required
                 value={form.message}
                 onChange={handleChange}
@@ -196,7 +223,7 @@ export default function Contact() {
                 'Sending...'
               ) : (
                 <>
-                  <i className="fa-solid fa-paper-plane" /> Initialize Contact
+                  <i className="fa-solid fa-paper-plane" /> Send Message
                 </>
               )}
             </motion.button>
@@ -204,16 +231,15 @@ export default function Contact() {
             {status === 'sent' && (
               <motion.div
                 className="form-success"
-                initial={{ opacity: 0, y: -10 }}
+                initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
               >
-                <i className="fa-solid fa-circle-check" /> Message sent successfully!
-                I&apos;ll get back to you soon.
+                <i className="fa-solid fa-circle-check" /> Message sent! I'll get back to you soon.
               </motion.div>
             )}
           </motion.form>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

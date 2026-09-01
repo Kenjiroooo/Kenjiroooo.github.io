@@ -1,140 +1,114 @@
 import { motion } from 'framer-motion';
-import ParticleCanvas from './ParticleCanvas';
-import { useTypedText } from '../hooks/useTypedText';
 import { socialLinks } from '../data/socials';
 
-const container = {
+const fadeUp = {
+  hidden: { opacity: 0, y: 32 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
+};
+
+const stagger = {
   hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.3,
-    },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
-};
-
-const imageItem = {
-  hidden: { opacity: 0, x: 60, scale: 0.92 },
-  show: { opacity: 1, x: 0, scale: 1, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] as [number, number, number, number], delay: 0.5 } },
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
 };
 
 export default function Hero() {
-  const typedText = useTypedText();
-
   return (
     <section className="hero" id="home">
-      <ParticleCanvas />
-
       <div className="hero-container">
-        {/* Left: Text content */}
+        
+        {/* Left Column */}
         <motion.div
-          className="hero-text"
-          variants={container}
+          className="hero-left"
+          variants={stagger}
           initial="hidden"
           animate="show"
         >
-          <motion.div className="status-badge" variants={item}>
-            <span className="status-dot" />
-            Open to Opportunities
+          <motion.div className="hero-line" variants={fadeUp}></motion.div>
+          
+          <motion.h1 className="hero-name" variants={fadeUp}>
+            I'm Kenji, a<br />Web Developer
+          </motion.h1>
+          
+          <motion.p className="hero-desc" variants={fadeUp}>
+            Computer Engineering student at Universidad de Dagupan specializing in AI Integration, Integrated Web Development, and Embedded Systems.
+          </motion.p>
+          
+          <motion.button 
+            className="hero-scroll-btn" 
+            variants={fadeUp}
+            onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
+            aria-label="Scroll down"
+          >
+            <i className="fa-solid fa-chevron-down" />
+          </motion.button>
+        </motion.div>
+
+        {/* Center Column: Image */}
+        <motion.div 
+          className="hero-center"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <img src="/mypic.png" alt="Kenji D. Sakamoto" />
+        </motion.div>
+
+        {/* Right Column */}
+        <motion.div 
+          className="hero-right"
+          variants={stagger}
+          initial="hidden"
+          animate="show"
+        >
+          {/* About block */}
+          <motion.div className="hero-block" variants={fadeUp}>
+            <h3 className="hero-block-title">ABOUT ME</h3>
+            <p className="hero-block-desc">
+              I build intelligent hardware-software integrations and maintainable applications for real-world problems.
+            </p>
+            <a href="#about" className="hero-block-link" onClick={(e) => {
+                e.preventDefault();
+                document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
+            }}>
+              LEARN MORE <i className="fa-solid fa-arrow-right" style={{ fontSize: '0.8em', marginLeft: 4 }}/>
+            </a>
           </motion.div>
 
-          <motion.h1 className="hero-name" variants={item}>
-            Kenji D. Sakamoto
-          </motion.h1>
-
-          <motion.h2 className="hero-title" variants={item}>
-            <span className="typed-text">{typedText}</span>
-            <span className="cursor">|</span>
-          </motion.h2>
-
-          <motion.p className="hero-desc" variants={item}>
-            Computer Engineering student at Universidad de Dagupan specializing in{' '}
-            <strong>AI Integration</strong>,{' '}
-            <strong>Integrated Web Development</strong>, and{' '}
-            <strong>Embedded Systems</strong>. I build intelligent hardware-software
-            integrations and maintainable applications for real-world problems.
-          </motion.p>
-
-          <motion.div className="hero-buttons" variants={item}>
-            <motion.a
-              href="#portfolio"
-              className="btn btn-primary"
-              whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={(e) => {
+          {/* Work block */}
+          <motion.div className="hero-block" variants={fadeUp}>
+            <h3 className="hero-block-title">MY WORK</h3>
+            <p className="hero-block-desc">
+              From advanced LLM APIs in web apps to low-level C++ for microcontrollers, I focus on scalable solutions.
+            </p>
+            <a href="#portfolio" className="hero-block-link" onClick={(e) => {
                 e.preventDefault();
                 document.querySelector('#portfolio')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              View Projects
-            </motion.a>
-            <motion.a
-              href="/Kenji_Sakamoto_Resume_2026.pdf"
-              download="Kenji_Sakamoto_Resume_2026.pdf"
-              target="_blank"
-              className="btn btn-outline"
-              whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              <i className="fa-solid fa-download" /> Download Resume
-            </motion.a>
+            }}>
+              BROWSE PORTFOLIO <i className="fa-solid fa-arrow-right" style={{ fontSize: '0.8em', marginLeft: 4 }}/>
+            </a>
           </motion.div>
 
-          <motion.div className="social-icons" variants={item}>
-            {socialLinks.map(link => (
-              <motion.a
-                key={link.ariaLabel}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-icon"
-                aria-label={link.ariaLabel}
-                title={link.title}
-                whileHover={{ scale: 1.15, y: -4 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <i className={link.icon} />
-              </motion.a>
-            ))}
+          {/* Follow block */}
+          <motion.div className="hero-block" variants={fadeUp}>
+            <h3 className="hero-block-title">FOLLOW ME</h3>
+            <div className="hero-socials">
+              {socialLinks.map(link => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.ariaLabel}
+                  title={link.title}
+                >
+                  <i className={link.icon} />
+                </a>
+              ))}
+            </div>
           </motion.div>
         </motion.div>
-
-        {/* Right: Avatar */}
-        <motion.div className="hero-image" variants={imageItem} initial="hidden" animate="show">
-          <div className="avatar-blob">
-            <img
-              src="/Portfoliopic.webp"
-              alt="Kenji D. Sakamoto"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
-            />
-          </div>
-          <div className="blob-ring" />
-        </motion.div>
+        
       </div>
-
-      {/* Scroll down indicator */}
-      <motion.div
-        className="hero-scroll"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.8, duration: 0.6 }}
-      >
-        <a
-          href="#about"
-          aria-label="Scroll down"
-          onClick={(e) => {
-            e.preventDefault();
-            document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
-          }}
-        >
-          <i className="fa-solid fa-chevron-down" />
-        </a>
-      </motion.div>
     </section>
   );
 }

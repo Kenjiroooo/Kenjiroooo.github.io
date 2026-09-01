@@ -1,115 +1,94 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { techStack } from '../data/techStack';
 import type { TechCategory } from '../types';
-
-type FilterKey = 'all' | TechCategory;
-
-const FILTERS: { key: FilterKey; label: string }[] = [
-  { key: 'all', label: 'ALL' },
-  { key: 'languages', label: 'LANGUAGES' },
-  { key: 'web', label: 'WEB' },
-  { key: 'ai', label: 'AI' },
-  { key: 'embedded', label: 'EMBEDDED' },
-  { key: 'tools', label: 'TOOLS' },
-];
+import React from 'react';
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 32 },
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
 };
 
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+};
+
+type CategoryConfig = {
+  key: TechCategory;
+  label: string;
+};
+
+const CATEGORIES: CategoryConfig[] = [
+  { key: 'languages', label: 'Languages' },
+  { key: 'web',       label: 'Web & Frameworks' },
+  { key: 'ai',        label: 'AI & Tooling' },
+  { key: 'embedded',  label: 'Embedded & Hardware' },
+  { key: 'tools',     label: 'Tools & DevOps' },
+];
+
 export default function TechStack() {
-  const [activeFilter, setActiveFilter] = useState<FilterKey>('all');
-
-  const filtered = techStack.filter(
-    tech => activeFilter === 'all' || tech.category === activeFilter
-  );
-
-  const rows = activeFilter === 'all' ? 3 : 2;
-
-  // Pad the array so it divides evenly by the number of rows, to ensure grid columns are perfectly square
-  let paddedFiltered = [...filtered];
-  if (paddedFiltered.length > 0) {
-    let i = 0;
-    while (paddedFiltered.length % rows !== 0) {
-      paddedFiltered.push(filtered[i % filtered.length]);
-      i++;
-    }
-  }
-
-  const rowItems = Array.from({ length: rows }, () => [] as typeof paddedFiltered);
-  paddedFiltered.forEach((tech, index) => {
-    rowItems[index % rows].push(tech);
-  });
-
   return (
     <section className="tech-stack" id="tech">
-      {/* Subtle technical background elements */}
-      <div className="tech-bg-grid"></div>
-
       <div className="section-container">
         <motion.div
-          className="section-header"
+          className="section-eyebrow"
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <span className="section-tag">Core Competencies</span>
-          <h2 className="section-title">Tech Stack</h2>
+          <span className="section-number">02</span>
+          Tech Stack
         </motion.div>
 
-        {/* Filter buttons */}
         <motion.div
-          className="gallery-filter tech-filter"
+          className="section-header"
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
         >
-          {FILTERS.map(f => (
-            <motion.button
-              key={f.key}
-              className={`filter-btn${activeFilter === f.key ? ' active' : ''}`}
-              onClick={() => setActiveFilter(f.key)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.96 }}
-            >
-              {f.label}
-            </motion.button>
-          ))}
+          <h2 className="section-title">Core Competencies</h2>
         </motion.div>
 
-        {/* Tech Stack Slider */}
-        <div className="tech-slider">
-          {rowItems.map((items, rowIndex) => (
-            <div 
-              key={rowIndex}
-              className={`tech-track ${rowIndex % 2 === 1 ? 'reverse' : ''}`}
-            >
-              {[...items, ...items].map((tech, index) => (
-                <motion.div
-                  key={`${tech.id}-${rowIndex}-${index}`}
-                className="tech-card"
-                initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-                whileHover={{ y: -5, scale: 1.05 }}
-                // We use CSS variables to pass the brand color for hover glows
-                style={{ '--brand-color': tech.brandColor } as React.CSSProperties}
+        <div className="tech-categories">
+          {CATEGORIES.map((cat, catIdx) => {
+            const items = techStack.filter(t => t.category === cat.key);
+            return (
+              <motion.div
+                key={cat.key}
+                className="tech-category"
+                variants={stagger}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.15 }}
               >
-                <div className="tech-icon-wrapper">
-                  {tech.icon}
-                </div>
-                <div className="tech-info">
-                  <h3 className="tech-name">{tech.name}</h3>
-                  <span className="tech-category-label">{tech.category.toUpperCase()}</span>
-                </div>
+                {/* Category header */}
+                <motion.div className="tech-category-header" variants={fadeUp}>
+                  <div className="tech-category-name">{cat.label}</div>
+                  <div className="tech-category-count">
+                    {String(catIdx + 1).padStart(2, '0')}
+                  </div>
+                </motion.div>
+
+                {/* Tech pills */}
+                <motion.div className="tech-items" variants={stagger}>
+                  {items.map(tech => (
+                    <motion.div
+                      key={tech.id}
+                      className="tech-pill"
+                      style={{ '--brand-color': tech.brandColor } as React.CSSProperties}
+                      variants={fadeUp}
+                      whileHover={{ y: -2 }}
+                    >
+                      <span className="tech-pill-icon">{tech.icon}</span>
+                      {tech.name}
+                    </motion.div>
+                  ))}
+                </motion.div>
               </motion.div>
-            ))}
-          </div>
-        ))}
+            );
+          })}
         </div>
       </div>
     </section>

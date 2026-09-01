@@ -1,107 +1,79 @@
 import { motion } from 'framer-motion';
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 32 },
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
 };
 
 const stagger = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12 } },
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
 };
-
-const INFO_CARDS = [
-  { icon: 'fa-solid fa-location-dot', label: 'Location', value: 'Dagupan City, PH' },
-  { icon: 'fa-solid fa-building-columns', label: 'Education', value: 'Universidad de Dagupan' },
-  { icon: 'fa-solid fa-laptop-code', label: 'Focus', value: 'AI Integration & Web' },
-  { icon: 'fa-solid fa-envelope', label: 'Contact', value: 'sakamotokenji35@gmail.com' },
-];
 
 export default function About() {
   return (
     <section className="about" id="about">
       <div className="section-container">
-        <motion.div
-          className="section-header"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <span className="section-tag">About Me</span>
-          <h2 className="section-title">Engineering Background</h2>
-        </motion.div>
-
-        <motion.div
-          className="about-grid"
-          variants={stagger}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {/* Image Column */}
-          <motion.div className="about-image-wrapper" variants={fadeUp}>
-            <div className="about-avatar">
-              <img
-                src="/Portfoliopic.webp"
-                alt="Kenji D. Sakamoto"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
-              />
-            </div>
-            <div className="about-badge">
-              <i className="fa-solid fa-brain" />
-              <span>AI &amp; Web Integration</span>
-            </div>
-          </motion.div>
-
-          {/* Content Column */}
-          <motion.div className="about-content" variants={stagger}>
-            <motion.h3 variants={fadeUp}>Driven by complex problem-solving.</motion.h3>
-            <motion.p className="about-subtitle" variants={fadeUp}>
-              <i className="fa-solid fa-graduation-cap" /> B.S. Computer Engineering |
-              Universidad de Dagupan
-            </motion.p>
-            <motion.p variants={fadeUp}>
-              I am a Computer Engineering student dedicated to building intelligent
-              hardware-software integrations and performant web applications. My academic
-              and project experience spans AI integration, integrated web development, and
-              embedded systems.
-            </motion.p>
-            <motion.p variants={fadeUp}>
-              Whether I'm integrating advanced LLM APIs into web applications, writing
-              low-level C++ for micro-controllers, or designing responsive interfaces, I
-              focus on delivering scalable, clean, and intelligent solutions. I am
-              currently seeking internship opportunities to apply my engineering foundation
-              to real-world products.
-            </motion.p>
-
-            <motion.div className="about-info-grid" variants={stagger}>
-              {INFO_CARDS.map(card => (
-                <motion.div key={card.label} className="info-card" variants={fadeUp}>
-                  <i className={card.icon} />
-                  <div>
-                    <span className="info-label">{card.label}</span>
-                    <span className="info-value">{card.value}</span>
-                  </div>
-                </motion.div>
-              ))}
+        
+        <div className="about-grid">
+          {/* Left Column */}
+          <motion.div 
+            className="about-left-col"
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <motion.div className="about-tag" variants={fadeUp}>
+               <span className="slash">//</span> ABOUT ME
             </motion.div>
-
-            <motion.a
-              href="#contact"
-              className="btn btn-primary"
+            
+            <motion.h2 className="about-heading" variants={fadeUp}>
+              I've been building hardware and software systems since 2024
+            </motion.h2>
+            
+            <motion.p className="about-desc" variants={fadeUp}>
+              I am a Computer Engineering student dedicated to building intelligent hardware-software integrations and performant web applications. My academic and project experience spans AI integration, integrated web development, and embedded systems.
+            </motion.p>
+            
+            <motion.a 
+              href="#contact" 
+              className="about-link" 
               variants={fadeUp}
-              whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.97 }}
               onClick={(e) => {
                 e.preventDefault();
                 document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              Let&apos;s Connect
+              More about me <i className="fa-solid fa-arrow-right" style={{ fontSize: '0.8em', marginLeft: 4 }}/>
             </motion.a>
           </motion.div>
-        </motion.div>
+          
+          {/* Right Column */}
+          <motion.div 
+            className="about-right-col"
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <motion.div className="about-stats-row" variants={fadeUp}>
+               <div className="about-stat">
+                 <span className="stat-num">5+</span>
+                 <span className="stat-text">Projects<br/>Built</span>
+               </div>
+               <div className="about-stat">
+                 <span className="stat-num">23+</span>
+                 <span className="stat-text">Technologies<br/>Mastered</span>
+               </div>
+            </motion.div>
+            
+            <motion.p className="about-desc-small" variants={fadeUp}>
+               Whether I'm integrating advanced LLM APIs into web applications, writing low-level C++ for microcontrollers, or designing responsive interfaces, I focus on delivering scalable, clean, and intelligent solutions. I am currently seeking internship opportunities to apply my engineering foundation to real-world products.
+            </motion.p>
+          </motion.div>
+        </div>
+        
       </div>
     </section>
   );

@@ -1,12 +1,13 @@
 import { socialLinks } from '../data/socials';
 
 const NAV_ITEMS = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
+  { label: 'Home',       href: '#home' },
+  { label: 'About',      href: '#about' },
   { label: 'Tech Stack', href: '#tech' },
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Gallery', href: '#gallery' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Projects',   href: '#portfolio' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Gallery',    href: '#gallery' },
+  { label: 'Contact',    href: '#contact' },
 ];
 
 export default function Footer() {
@@ -44,7 +45,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; 2026 Engr. Kenji D. Sakamoto. All Rights Reserved.</p>
+          <p>© 2026 Kenji D. Sakamoto · All Rights Reserved · <a href="https://www.kenjisakamoto.me" style={{ color: 'var(--accent)' }}>kenjisakamoto.me</a></p>
         </div>
       </div>
     </footer>
