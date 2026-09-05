@@ -39,7 +39,6 @@ export const techStack: TechItem[] = [
   // ================= LANGUAGES =================
   { id: 'python', name: 'Python', category: 'languages', icon: <i className="devicon-python-plain colored"></i>, brandColor: '#3776AB' },
   { id: 'javascript', name: 'JavaScript', category: 'languages', icon: <i className="devicon-javascript-plain colored"></i>, brandColor: '#F7DF1E' },
-  { id: 'c', name: 'C', category: 'languages', icon: <i className="devicon-c-plain colored"></i>, brandColor: '#A8B9CC' },
   { id: 'cpp', name: 'C++', category: 'languages', icon: <i className="devicon-cplusplus-plain colored"></i>, brandColor: '#00599C' },
   { id: 'html5', name: 'HTML5', category: 'languages', icon: <i className="devicon-html5-plain colored"></i>, brandColor: '#E34F26' },
   { id: 'css3', name: 'CSS3', category: 'languages', icon: <i className="devicon-css3-plain colored"></i>, brandColor: '#1572B6' },

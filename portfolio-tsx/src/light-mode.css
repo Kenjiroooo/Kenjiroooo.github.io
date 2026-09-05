@@ -54,3 +54,13 @@ body.light-mode .featured-project .card-overlay {
 body.light-mode .hamburger span {
   background: var(--text-primary);
 }
+
+body.light-mode .hero-resume-btn {
+  color: var(--text-primary);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+body.light-mode .hero-resume-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: #0d6efd;
+  color: #0d6efd;
+}

@@ -33,14 +33,24 @@ export default function Hero() {
             Computer Engineering student at Universidad de Dagupan specializing in AI Integration, Integrated Web Development, and Embedded Systems.
           </motion.p>
           
-          <motion.button 
-            className="hero-scroll-btn" 
-            variants={fadeUp}
-            onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
-            aria-label="Scroll down"
-          >
-            <i className="fa-solid fa-chevron-down" />
-          </motion.button>
+          <motion.div className="hero-buttons" variants={fadeUp}>
+            <a 
+              href="/Kenji_Sakamoto_Resume_2026.pdf" 
+              download 
+              className="hero-resume-btn"
+            >
+              Resume
+              <i className="fa-solid fa-download" style={{ marginLeft: '8px' }} />
+            </a>
+            
+            <button 
+              className="hero-scroll-btn" 
+              onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
+              aria-label="Scroll down"
+            >
+              <i className="fa-solid fa-chevron-down" />
+            </button>
+          </motion.div>
         </motion.div>
 
         {/* Center Column: Image */}
@@ -50,7 +60,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <img src="/coder.jpg" alt="Kenji D. Sakamoto" />
+          <img src="/mypic.png" alt="Kenji D. Sakamoto" />
         </motion.div>
 
         {/* Right Column */}
