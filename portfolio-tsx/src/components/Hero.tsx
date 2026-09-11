@@ -12,6 +12,38 @@ const stagger = {
 };
 
 export default function Hero() {
+  const handleDownloadClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault(); // Prevent immediate download
+
+    try {
+      // Send the email notification
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '5a8c0f62-97e1-4ca2-b8a5-b53605a5d109',
+          name: 'Portfolio Website',
+          email: 'noreply@yourportfolio.com',
+          subject: 'Resume Downloaded!',
+          message: 'Someone just clicked the download button for your resume on your portfolio website.',
+        }),
+      });
+    } catch (error) {
+      console.error(error);
+    }
+
+    // Trigger the download programmatically after the email is sent
+    const link = document.createElement('a');
+    link.href = '/Kenji_Sakamoto_Resume_2026.pdf';
+    link.download = 'Kenji_Sakamoto_Resume_2026.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section className="hero" id="home">
       <div className="hero-container">
@@ -36,8 +68,8 @@ export default function Hero() {
           <motion.div className="hero-buttons" variants={fadeUp}>
             <a 
               href="/Kenji_Sakamoto_Resume_2026.pdf" 
-              download 
               className="hero-resume-btn"
+              onClick={handleDownloadClick}
             >
               Resume
               <i className="fa-solid fa-download" style={{ marginLeft: '8px' }} />

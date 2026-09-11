@@ -50,7 +50,7 @@
 
   /* Layout */
   --max-width: 1140px;
-  --section-pad: 128px;
+  --section-pad: 80px;
   --gutter: 28px;
 }
 
@@ -59,7 +59,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 55px;
 }
 
 body {
@@ -170,6 +170,7 @@ h1, h2, h3, h4 {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: var(--section-pad) var(--gutter);
+  width: 100%;
 }
 
 .section-eyebrow {
@@ -569,6 +570,9 @@ h1, h2, h3, h4 {
   background: var(--bg-secondary);
   position: relative;
   border-top: 1px solid var(--border);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 .about-grid {
@@ -686,6 +690,9 @@ h1, h2, h3, h4 {
   background: var(--bg-primary);
   position: relative;
   border-top: 1px solid var(--border);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 /* Subtle grid */
@@ -781,6 +788,9 @@ h1, h2, h3, h4 {
   background: var(--bg-secondary);
   position: relative;
   border-top: 1px solid var(--border);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 .portfolio-filter {
@@ -1006,6 +1016,9 @@ h1, h2, h3, h4 {
   background: var(--bg-primary);
   position: relative;
   border-top: 1px solid var(--border);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 .experience-layout {
@@ -1254,6 +1267,9 @@ h1, h2, h3, h4 {
   background: var(--bg-primary);
   position: relative;
   border-top: 1px solid var(--border);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 /* Large editorial CTA heading */
