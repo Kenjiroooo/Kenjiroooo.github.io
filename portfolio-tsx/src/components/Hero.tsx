@@ -58,7 +58,7 @@ export default function Hero() {
           <motion.div className="hero-line" variants={fadeUp}></motion.div>
           
           <motion.h1 className="hero-name" variants={fadeUp}>
-            I'm Kenji, a<br />Web Developer
+            I'm Kenji, a<br />Software Engineer
           </motion.h1>
           
           <motion.p className="hero-desc" variants={fadeUp}>
