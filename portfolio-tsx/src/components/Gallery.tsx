@@ -16,6 +16,11 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
 };
 
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
+};
+
 export default function Gallery() {
   const [activeFilter, setActiveFilter] = useState<FilterKey>('all');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -59,33 +64,40 @@ export default function Gallery() {
           ))}
         </motion.div>
 
-        {/* Gallery slider */}
-        <div className="gallery-slider">
-          <div className="gallery-track">
-            {[...filtered, ...filtered].map((image, index) => (
+        {/* Gallery Bento Grid */}
+        <motion.div 
+          className="gallery-bento-grid"
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          <AnimatePresence mode="popLayout">
+            {filtered.map((image, index) => (
               <motion.div
-                key={`${image.id}-${index}`}
-                className="gallery-card"
-                initial={{ opacity: 0, scale: 0.92, y: 20 }}
+                key={image.id}
+                layout
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-                whileHover={{ y: -6 }}
+                exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+                className={`gallery-bento-item bento-${index % 5}`}
+                whileHover={{ y: -4 }}
                 onClick={() => setSelectedImage(image.src)}
               >
-                <div className="gallery-image">
+                <div className="bento-image-wrapper">
                   <img src={image.src} alt={image.alt} loading="lazy" />
-                  <div className="gallery-overlay">
+                  <div className="bento-overlay">
                     <i className="fa-solid fa-expand" />
-                    <span>View Image</span>
                   </div>
                 </div>
-                <div className="gallery-caption">
+                <div className="bento-caption">
                   <p>{image.caption}</p>
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
+          </AnimatePresence>
+        </motion.div>
       </div>
 
       {/* Lightbox for full view */}
