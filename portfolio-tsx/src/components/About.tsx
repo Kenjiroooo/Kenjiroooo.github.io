@@ -29,7 +29,7 @@ export default function About() {
             </motion.div>
             
             <motion.h2 className="about-heading" variants={fadeUp}>
-              I've been building hardware and software systems since 2024
+              I've been building hardware and software systems since 2022
             </motion.h2>
             
             <motion.p className="about-desc" variants={fadeUp}>
