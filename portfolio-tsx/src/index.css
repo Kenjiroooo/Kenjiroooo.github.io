@@ -1586,3 +1586,7 @@ h1, h2, h3, h4 {
   :root { --max-width: 1240px; }
   .hero-container { max-width: 1340px; }
 }
+
+.card-image--contain img {
+  object-fit: contain !important;
+}

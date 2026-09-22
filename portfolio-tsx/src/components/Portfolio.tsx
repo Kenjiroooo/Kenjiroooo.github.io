@@ -156,7 +156,7 @@ export default function Portfolio() {
                 exit={{ opacity: 0, scale: 0.9, y: -10 }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
               >
-                <div className="card-image">
+                <div className={`card-image${project.id === 'owl-assistant' ? ' card-image--contain' : ''}`}>
                   <img src={project.image} alt={project.alt} loading="lazy" />
                   <div className="card-overlay">
                     <div className="card-links">
