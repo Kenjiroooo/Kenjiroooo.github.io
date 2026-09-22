@@ -37,4 +37,9 @@ export const certifications: Certification[] = [
     image: '/pythoncertificate.webp',
     alt: 'Python Certificate',
   },
+  {
+    id: 'cert-cisco',
+    image: '/pythoncisco.png',
+    alt: 'Python Cisco Certificate',
+  },
 ];
