@@ -57,8 +57,6 @@ export const techStack: TechItem[] = [
   { id: 'ai-studio', name: 'Google AI Studio', category: 'ai', icon: <i className="devicon-google-plain colored"></i>, brandColor: '#4285F4' },
   { id: 'deepseek', name: 'DeepSeek', category: 'ai', icon: <SiDeepseek />, brandColor: '#4D8AF0' },
   { id: 'claude', name: 'Claude', category: 'ai', icon: <SiClaude />, brandColor: '#CC8C68' },
-  { id: 'gen-ai', name: 'Generative AI', category: 'ai', icon: <LuBrainCircuit />, brandColor: '#00E676' },
-  { id: 'cv', name: 'Computer Vision', category: 'ai', icon: <FaBrain />, brandColor: '#FF4081' },
 
   // ================= EMBEDDED =================
   { id: 'arduino', name: 'Arduino', category: 'embedded', icon: <i className="devicon-arduino-plain colored"></i>, brandColor: '#00979D' },
