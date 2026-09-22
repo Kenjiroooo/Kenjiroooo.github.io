@@ -27,6 +27,24 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: 'owl-assistant',
+    category: 'web',
+    image: '/owl.jpg',
+    alt: 'OWL: AI-Integrated Student Assistant Prototype',
+    tag: 'AI-Powered Assistant',
+    tagVariant: 'default',
+    title: 'OWL: AI-Integrated Student Assistant Prototype',
+    description: 'A full-stack AI chatbot prototype built to modernize student support at Universidad de Dagupan. Powered by advanced Large Language Models (LLMs) and a centralized knowledge base, this system serves as an interactive platform for answering frequently asked questions, guiding campus navigation, and streamlining administrative assistance.',
+    techStack: ['LLMs', 'Chatbot', 'Full-Stack'],
+    links: [
+      {
+        href: 'https://github.com/Kenjiroooo/OWL---AI-Integrated-Student-Assistant',
+        label: 'Source Code',
+        icon: 'fa-brands fa-github',
+      }
+    ],
+  },
+  {
     id: 'robotics-arm',
     category: 'hardware',
     image: '/robotics-arm.webp',
@@ -83,25 +101,6 @@ export const projects: Project[] = [
       },
       {
         href: 'https://github.com/Kenjiroooo/Bloodhunt-monopoly',
-        label: 'Source Code',
-        icon: 'fa-brands fa-github',
-      },
-    ],
-  },
-  {
-    id: 'smars',
-    category: 'hardware',
-    image: '/smars.webp',
-    alt: 'SMARS Line Following Robot',
-    tag: 'Embedded Systems / Robotics',
-    tagVariant: 'hardware',
-    title: 'SMARS Line Following Robot',
-    description:
-      'Developed a SMARS-based autonomous line-following robot using Arduino Uno, L298P motor driver, GA12-N20 DC motors, and three IR line tracking sensors. The system processes real-time sensor input to detect and follow a predefined path by dynamically controlling motor movement. The robot is powered by a 9V battery and housed in a custom 3D-printed chassis.',
-    techStack: ['Arduino Uno', 'C++', 'Robotics integration', '3D Assembly'],
-    links: [
-      {
-        href: 'https://github.com/Kenjiroooo/School-output-and-practice-coding-projects/tree/main/SMARS%20Line%20Following%20Robot',
         label: 'Source Code',
         icon: 'fa-brands fa-github',
       },
