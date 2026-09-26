@@ -23,7 +23,8 @@ const EMPTY_FORM: FormData = { name: '', email: '', subject: '', message: '' };
 
 export default function Contact() {
   const [form, setForm] = useState<FormData>(EMPTY_FORM);
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'rate-limited'>('idle');
+  const [cooldownTime, setCooldownTime] = useState(0);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -31,6 +32,24 @@ export default function Contact() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    // Client-side rate limiter: prevent spamming
+    const lastSentStr = localStorage.getItem('last_message_sent_at');
+    if (lastSentStr) {
+      const lastSentTime = parseInt(lastSentStr, 10);
+      const currentTime = Date.now();
+      const timeDiff = currentTime - lastSentTime;
+      const cooldownPeriod = 5 * 60 * 1000; // 5 minutes in milliseconds
+
+      if (timeDiff < cooldownPeriod) {
+        const remainingMinutes = Math.ceil((cooldownPeriod - timeDiff) / 60000);
+        setCooldownTime(remainingMinutes);
+        setStatus('rate-limited');
+        setTimeout(() => setStatus('idle'), 5000);
+        return;
+      }
+    }
+
     setStatus('sending');
 
     try {
@@ -53,6 +72,7 @@ export default function Contact() {
       if (result.success) {
         setStatus('sent');
         setForm(EMPTY_FORM);
+        localStorage.setItem('last_message_sent_at', Date.now().toString());
         setTimeout(() => setStatus('idle'), 5000);
       } else {
         console.error(result);
@@ -236,6 +256,19 @@ export default function Contact() {
                 exit={{ opacity: 0 }}
               >
                 <i className="fa-solid fa-circle-check" /> Message sent! I'll get back to you soon.
+              </motion.div>
+            )}
+
+            {status === 'rate-limited' && (
+              <motion.div
+                className="form-error"
+                style={{ color: '#EF4444', fontSize: '0.85rem', marginTop: '12px', textAlign: 'center', fontWeight: 500 }}
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+              >
+                <i className="fa-solid fa-shield-halved" style={{ marginRight: 6 }} /> 
+                Rate limit active. Please wait {cooldownTime} minute(s) to prevent spam.
               </motion.div>
             )}
           </motion.form>
