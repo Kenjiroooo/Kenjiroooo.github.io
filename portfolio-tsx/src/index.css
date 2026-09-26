@@ -796,6 +796,9 @@ h1, h2, h3, h4 {
   box-shadow: var(--shadow-card);
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tech-display-area::before {
