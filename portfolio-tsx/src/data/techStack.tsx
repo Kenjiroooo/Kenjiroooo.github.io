@@ -5,8 +5,6 @@ import {
 } from 'react-icons/si';
 
 import { VscJson } from 'react-icons/vsc'; // For REST API
-import { FaBrain } from 'react-icons/fa6'; // For Gen AI, CV
-import { LuBrainCircuit } from 'react-icons/lu'; // Alternative AI icon
 
 const GeminiLogo = () => (
   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '1em', height: '1em' }}>
