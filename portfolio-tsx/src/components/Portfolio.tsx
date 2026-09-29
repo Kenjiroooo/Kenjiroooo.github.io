@@ -86,10 +86,11 @@ export default function Portfolio() {
             <motion.div
               key={`featured-${featured.id}-${activeFilter}`}
               className="featured-project"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
               exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
             >
               {/* Image side */}
               <div className="card-image">
@@ -146,15 +147,16 @@ export default function Portfolio() {
         {/* Rest of projects */}
         <motion.div className="portfolio-grid" layout style={{ marginTop: 16 }}>
           <AnimatePresence mode="popLayout">
-            {rest.map((project) => (
+            {rest.map((project, index) => (
               <motion.div
                 key={project.id}
                 className="portfolio-card"
                 layout
-                initial={{ opacity: 0, scale: 0.94, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.94, y: 30 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
                 exit={{ opacity: 0, scale: 0.9, y: -10 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+                transition={{ duration: 0.5, delay: (index % 3) * 0.1, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
               >
                 <div className={`card-image${project.id === 'owl-assistant' ? ' card-image--contain' : ''}`}>
                   <img src={project.image} alt={project.alt} loading="lazy" />
