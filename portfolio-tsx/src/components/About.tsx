@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import GitHubContributions from './GitHubContributions';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
@@ -73,8 +74,12 @@ export default function About() {
             </motion.p>
           </motion.div>
         </div>
+
+        {/* GitHub Contributions Graph */}
+        <GitHubContributions />
         
       </div>
     </section>
   );
 }
+
