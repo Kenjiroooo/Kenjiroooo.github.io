@@ -64,35 +64,36 @@ export default function Gallery() {
           ))}
         </motion.div>
 
-        {/* Gallery Bento Grid */}
+        {/* Gallery Accordion Grid */}
         <motion.div 
-          className="gallery-bento-grid"
+          className="gallery-accordion-container"
           variants={stagger}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
         >
           <AnimatePresence mode="popLayout">
-            {filtered.map((image, index) => (
+            {filtered.map((image) => (
               <motion.div
                 key={image.id}
                 layout
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, transition: { duration: 0.2 } }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-                className={`gallery-bento-item bento-${index % 5}`}
-                whileHover={{ y: -4 }}
+                className="gallery-accordion-item"
                 onClick={() => setSelectedImage(image.src)}
               >
-                <div className="bento-image-wrapper">
+                <div className="accordion-image-wrapper">
                   <img src={image.src} alt={image.alt} loading="lazy" />
-                  <div className="bento-overlay">
+                </div>
+                <div className="accordion-overlay" />
+                <div className="accordion-content">
+                  <div className="accordion-icon">
                     <i className="fa-solid fa-expand" />
                   </div>
-                </div>
-                <div className="bento-caption">
-                  <p>{image.caption}</p>
+                  <span className="accordion-category">{image.category === 'work' ? 'Work & Projects' : 'Career & Events'}</span>
+                  <h3 className="accordion-caption">{image.caption}</h3>
                 </div>
               </motion.div>
             ))}
