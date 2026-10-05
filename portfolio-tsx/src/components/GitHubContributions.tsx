@@ -32,8 +32,14 @@ export default function GitHubContributions() {
 
   useEffect(() => {
     fetch(API_URL)
-      .then(res => res.json())
-      .then((json: ContributionData) => {
+      .then(res => {
+        if (!res.ok) throw new Error('API Error');
+        return res.json();
+      })
+      .then((json: any) => {
+        if (!json || !json.contributions) {
+          throw new Error('Invalid data format');
+        }
         setData(json);
         setLoading(false);
       })
