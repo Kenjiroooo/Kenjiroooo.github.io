@@ -7,30 +7,11 @@ import {
 import { VscJson } from 'react-icons/vsc'; // For REST API
 
 const GeminiLogo = () => (
-  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '1em', height: '1em' }}>
-    <path d="M12 0C12 6.62742 17.3726 12 24 12C17.3726 12 12 17.3726 12 24C12 17.3726 6.62742 12 0 12C6.62742 12 12 6.62742 12 0Z" fill="url(#gemini-grad)" />
-    <defs>
-      <linearGradient id="gemini-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#4285F4" />
-        <stop offset="33%" stopColor="#EA4335" />
-        <stop offset="66%" stopColor="#FBBC05" />
-        <stop offset="100%" stopColor="#34A853" />
-      </linearGradient>
-    </defs>
-  </svg>
+  <img src="/Gemini.png" alt="Gemini Logo" style={{ width: '1em', height: '1em' }} />
 );
 
 const AntigravityLogo = () => (
-  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '1em', height: '1em', padding: '0.1em' }}>
-    <path d="M 15 90 Q 50 -20 85 90" stroke="url(#ag-grad)" strokeWidth="18" strokeLinecap="round" />
-    <defs>
-      <linearGradient id="ag-grad" x1="0%" y1="100%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#1E88E5" />
-        <stop offset="50%" stopColor="#43A047" />
-        <stop offset="100%" stopColor="#FF9800" />
-      </linearGradient>
-    </defs>
-  </svg>
+  <img src="/antigravity-logo.png" alt="Antigravity Logo" style={{ width: '1em', height: '1em' }} />
 );
 
 export const techStack: TechItem[] = [
