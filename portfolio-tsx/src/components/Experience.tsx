@@ -108,6 +108,20 @@ export default function Experience() {
                       <span>Click to view</span>
                     </div>
                   </div>
+                  <div className="cert-info">
+                    <h4 className="cert-title">{cert.title}</h4>
+                    <p className="cert-meta">{cert.issuer} · {cert.date}</p>
+                    {cert.credentialUrl && (
+                      <a
+                        className="cert-verify"
+                        href={cert.credentialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Verify <i className="fa-solid fa-arrow-up-right-from-square" />
+                      </a>
+                    )}
+                  </div>
                 </motion.div>
               ))}
             </motion.div>

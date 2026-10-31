@@ -34,6 +34,10 @@ export interface Certification {
   id: string;
   image: string;
   alt: string;
+  title: string;
+  issuer: string;
+  date: string;
+  credentialUrl?: string;
 }
 
 export type ProjectCategory = 'web' | 'hardware' | 'software';

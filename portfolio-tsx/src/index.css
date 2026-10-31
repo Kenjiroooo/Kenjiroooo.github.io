@@ -1248,6 +1248,20 @@ h1, h2, h3, h4 {
 .cert-image img { width: 100%; display: block; transition: transform var(--duration-md) var(--ease-out); }
 .cert-card:hover .cert-image img { transform: scale(1.03); }
 
+.cert-info { padding: 12px 14px 14px; border-top: 1px solid var(--border); }
+.cert-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem; font-weight: 600;
+  color: var(--text-primary); margin: 0 0 4px;
+}
+.cert-meta { font-size: 0.78rem; color: var(--text-secondary); margin: 0 0 8px; }
+.cert-verify {
+  font-size: 0.78rem; font-weight: 600; color: var(--accent);
+  text-decoration: none;
+}
+.cert-verify i { font-size: 0.7em; margin-left: 4px; }
+.cert-verify:hover { text-decoration: underline; }
+
 .cert-overlay {
   position: absolute; inset: 0;
   background: rgba(10,10,15,0.84);
@@ -1555,6 +1569,7 @@ h1, h2, h3, h4 {
   color: var(--text-muted); font-weight: 700; margin-bottom: 2px;
 }
 .contact-value { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); }
+
 
 .contact-right {}
 
