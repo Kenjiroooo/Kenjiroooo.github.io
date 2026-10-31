@@ -23,7 +23,8 @@ const EMPTY_FORM: FormData = { name: '', email: '', subject: '', message: '' };
 
 export default function Contact() {
   const [form, setForm] = useState<FormData>(EMPTY_FORM);
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'rate-limited'>('idle');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'rate-limited' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
   const [copied, setCopied] = useState(false);
 
   async function copyEmail() {
@@ -87,13 +88,13 @@ export default function Contact() {
         setTimeout(() => setStatus('idle'), 5000);
       } else {
         console.error(result);
-        setStatus('idle');
-        alert('Something went wrong. Please try again.');
+        setStatus('error');
+        setErrorMessage('Something went wrong. Please try again.');
       }
     } catch (error) {
       console.error(error);
-      setStatus('idle');
-      alert('Network error. Please try again.');
+      setStatus('error');
+      setErrorMessage('Network error. Please check your connection and try again.');
     }
   }
 
@@ -283,6 +284,13 @@ export default function Contact() {
               >
                 <i className="fa-solid fa-circle-check" /> Message sent! I'll get back to you soon.
               </motion.div>
+            )}
+
+            {status === 'error' && (
+              <div className="form-error-inline" role="alert">
+                <i className="fa-solid fa-circle-exclamation" style={{ marginRight: 6 }} />
+                {errorMessage}
+              </div>
             )}
 
             {status === 'rate-limited' && (

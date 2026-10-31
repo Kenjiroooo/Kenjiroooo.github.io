@@ -1579,6 +1579,10 @@ a.contact-value:hover { color: var(--accent); }
   cursor: pointer;
 }
 .copy-email-btn:hover { background: var(--border-accent); }
+.form-error-inline {
+  color: #EF4444; font-size: 0.85rem; margin-top: 12px;
+  text-align: center; font-weight: 500;
+}
 
 
 .contact-right {}
