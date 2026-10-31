@@ -58,7 +58,7 @@ export default function Hero() {
           <motion.div className="hero-line" variants={fadeUp}></motion.div>
           
           <motion.h1 className="hero-name" variants={fadeUp}>
-            I'm Kenji, a<br />Software Engineer
+            I'm Kenji, a<br />Computer Engineering Student
           </motion.h1>
           
           <motion.p className="hero-desc" variants={fadeUp}>
@@ -67,7 +67,7 @@ export default function Hero() {
           
           <motion.div className="hero-buttons" variants={fadeUp}>
             <a 
-              href="/Kenji_Sakamoto_Resume_2026.pdf" 
+              href="/Kenji_Sakamoto_Resume_2026.pdf"
               className="hero-resume-btn"
               onClick={handleDownloadClick}
             >
