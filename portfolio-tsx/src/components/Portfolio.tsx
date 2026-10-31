@@ -44,7 +44,7 @@ export default function Portfolio() {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <span className="section-number">03</span>
+          <span className="section-number">04</span>
           Selected Work
         </motion.div>
 

@@ -27,7 +27,7 @@ export default function Experience() {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <span className="section-number">04</span>
+          <span className="section-number">03</span>
           Journey
         </motion.div>
 
