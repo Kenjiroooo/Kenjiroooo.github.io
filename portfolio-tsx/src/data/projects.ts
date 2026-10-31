@@ -20,7 +20,7 @@ export const projects: Project[] = [
         icon: 'fa-solid fa-arrow-up-right-from-square',
       },
       {
-        href: 'https://github.com/Kenjiroooo',
+        href: 'https://github.com/Kenjiroooo/Noctua',
         label: 'Source Code',
         icon: 'fa-brands fa-github',
       },
