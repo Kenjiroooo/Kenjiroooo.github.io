@@ -1569,6 +1569,16 @@ h1, h2, h3, h4 {
   color: var(--text-muted); font-weight: 700; margin-bottom: 2px;
 }
 .contact-value { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); }
+a.contact-value { text-decoration: none; transition: color var(--duration) var(--ease); }
+a.contact-value:hover { color: var(--accent); }
+.copy-email-btn {
+  margin-left: 10px; padding: 2px 8px;
+  font-size: 0.72rem; font-weight: 600;
+  color: var(--accent); background: transparent;
+  border: 1px solid var(--border-accent); border-radius: 6px;
+  cursor: pointer;
+}
+.copy-email-btn:hover { background: var(--border-accent); }
 
 
 .contact-right {}

@@ -14,9 +14,9 @@ const stagger = {
 };
 
 const CONTACT_DETAILS = [
-  { icon: 'fa-solid fa-envelope',      label: 'Email',    value: 'sakamotokenji35@gmail.com' },
-  { icon: 'fa-solid fa-map-marker-alt',label: 'Location', value: 'Dagupan City, Pangasinan, PH' },
-  { icon: 'fa-brands fa-linkedin',     label: 'LinkedIn', value: 'Kenji Sakamoto' },
+  { icon: 'fa-solid fa-envelope',      label: 'Email',    value: 'sakamotokenji35@gmail.com', href: 'mailto:sakamotokenji35@gmail.com' },
+  { icon: 'fa-solid fa-map-marker-alt',label: 'Location', value: 'Dagupan City, Pangasinan, PH', href: undefined as string | undefined },
+  { icon: 'fa-brands fa-linkedin',     label: 'LinkedIn', value: 'Kenji Sakamoto', href: 'https://www.linkedin.com/in/kenji-sakamoto-1bb582304/' },
 ];
 
 const EMPTY_FORM: FormData = { name: '', email: '', subject: '', message: '' };
@@ -24,6 +24,17 @@ const EMPTY_FORM: FormData = { name: '', email: '', subject: '', message: '' };
 export default function Contact() {
   const [form, setForm] = useState<FormData>(EMPTY_FORM);
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'rate-limited'>('idle');
+  const [copied, setCopied] = useState(false);
+
+  async function copyEmail() {
+    try {
+      await navigator.clipboard.writeText('sakamotokenji35@gmail.com');
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (error) {
+      console.error(error);
+    }
+  }
   const [cooldownTime, setCooldownTime] = useState(0);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -151,7 +162,22 @@ export default function Contact() {
                 </div>
                 <div>
                   <span className="contact-label">{detail.label}</span>
-                  <span className="contact-value">{detail.value}</span>
+                  {detail.href ? (
+                    <a
+                      className="contact-value"
+                      href={detail.href}
+                      {...(detail.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    >
+                      {detail.value}
+                    </a>
+                  ) : (
+                    <span className="contact-value">{detail.value}</span>
+                  )}
+                  {detail.label === 'Email' && (
+                    <button type="button" className="copy-email-btn" onClick={copyEmail}>
+                      {copied ? 'Copied!' : 'Copy'}
+                    </button>
+                  )}
                 </div>
               </motion.div>
             ))}
